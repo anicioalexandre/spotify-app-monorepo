@@ -2,12 +2,6 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "React Library",
   "extends": "./base.json",
-  "moduleResolution": "node",
-  "paths": {
-    "classnames": [
-      "node_modules/classnames/index.d.ts"
-    ]
-  },
   "compilerOptions": {
     "lib": ["ES2015"],
     "module": "ESNext",
