@@ -18,7 +18,6 @@ const Search = ({
   tracks,
   lastQuery,
   searchLoading,
-  tokenLoading,
 }) => {
   const {query} = useParams()
   const decodedQuery = decodeURI(query)
@@ -27,12 +26,11 @@ const Search = ({
     if (lastQuery !== query) getSearchAction(query)
   }, [query])
 
-  const isSomethingLoading = tokenLoading || searchLoading
   const isAlbumsEmpty = !albums.length
   const isTracksEmpty = !tracks.length
 
   const renderState = () => {
-    if (isSomethingLoading)
+    if (searchLoading)
       return [...Array(6)].map((_, i) => <LoadingState key={i} />)
     if (isAlbumsEmpty || isTracksEmpty) {
       return <EmptyState />
@@ -45,28 +43,30 @@ const Search = ({
       <FieldSet label={LABELS.albuns + `"${decodedQuery}"`}>
         {isSomethingLoading || isAlbumsEmpty
           ? renderState()
-          : albums.map(({albumId, albumImage, albumName, artistName, trackId}) => (
-              <Link
-                onClick={() =>
-                  setSearchedResults({
-                    albumId,
-                    image: albumImage,
-                    name: albumName,
-                    trackId,
-                    artistName,
-                  })
-                }
-                key={albumId}
-                to={`/album/${albumId}`}
-                className="decoration-0 ease-in-out duration-200 hover:text-opacity-75"
-              >
-                <ImageLabel
-                  src={albumImage}
-                  title={albumName}
-                  subtitle={artistName}
-                />
-              </Link>
-            ))}
+          : albums.map(
+              ({albumId, albumImage, albumName, artistName, trackId}) => (
+                <Link
+                  onClick={() =>
+                    setSearchedResults({
+                      albumId,
+                      image: albumImage,
+                      name: albumName,
+                      trackId,
+                      artistName,
+                    })
+                  }
+                  key={albumId}
+                  to={`/album/${albumId}`}
+                  className="decoration-0 ease-in-out duration-200 hover:text-opacity-75"
+                >
+                  <ImageLabel
+                    src={albumImage}
+                    title={albumName}
+                    subtitle={artistName}
+                  />
+                </Link>
+              ),
+            )}
       </FieldSet>
       <FieldSet label={LABELS.tracks + `"${decodedQuery}"`}>
         {isSomethingLoading || isTracksEmpty
@@ -99,9 +99,8 @@ const Search = ({
   )
 }
 
-const mapStateToProps = ({auth, search}) => {
+const mapStateToProps = ({search}) => {
   return {
-    tokenLoading: auth.loading,
     albums: search.albums,
     tracks: search.tracks,
     lastQuery: search.query,

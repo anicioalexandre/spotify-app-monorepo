@@ -39,7 +39,6 @@ const mapDispatchToProps = {
 
 SpotifyApp.propTypes = {
   getAuthAction: PropTypes.func,
-  token: PropTypes.string,
 }
 
 export default connect(null, mapDispatchToProps)(SpotifyApp)
