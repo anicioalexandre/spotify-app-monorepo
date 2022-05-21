@@ -47,7 +47,7 @@ const Album = ({getAlbumAction, album}) => {
   )
 }
 
-const mapStateToProps = ({auth, album}) => {
+const mapStateToProps = ({album}) => {
   return {
     album: {
       artistName: album.artistName,
