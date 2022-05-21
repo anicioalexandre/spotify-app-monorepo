@@ -2,8 +2,8 @@ import React, {FC, forwardRef} from 'react'
 
 import {IInput} from './types'
 
-const Input = forwardRef<IInput>(
-  ({children, className, label, ...props}: IInput, ref) => {
+const Input: FC<IInput> = forwardRef(
+  ({children, className, label, ...props}, ref) => {
     return (
       <label className="text-white flex flex-col">
         {label}

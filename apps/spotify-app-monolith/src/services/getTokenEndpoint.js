@@ -1,7 +1,7 @@
 import qs from 'qs'
 
 import axios from './axios'
-import { SPOTIFY_TOKEN_API } from './constants'
+import {SPOTIFY_TOKEN_API} from './constants'
 
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET
@@ -10,22 +10,22 @@ const getTokenEndpoint = async () => {
   const headers = {
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
     auth: {
       username: CLIENT_ID,
-      password: CLIENT_SECRET
-    }
+      password: CLIENT_SECRET,
+    },
   }
   const data = {
-    grant_type: 'client_credentials'
+    grant_type: 'client_credentials',
   }
 
   try {
     const response = await axios.post(
       SPOTIFY_TOKEN_API,
       qs.stringify(data),
-      headers
+      headers,
     )
     return Promise.resolve(response.data.access_token)
   } catch (error) {

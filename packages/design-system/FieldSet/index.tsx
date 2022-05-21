@@ -2,7 +2,7 @@ import React, {FC} from 'react'
 
 import {IFieldSet} from './types'
 
-const FieldSet: FC<IFieldSet> = ({children, className, label}) => {
+const FieldSet: FC<IFieldSet> = ({children, label}) => {
   return (
     <div className="border-none">
       <legend className="text-white text-l py-3 px-0">{label}</legend>
