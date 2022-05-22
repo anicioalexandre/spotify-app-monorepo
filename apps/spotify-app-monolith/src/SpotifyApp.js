@@ -15,8 +15,8 @@ function SpotifyApp({getAuthAction}) {
   }, [token])
 
   return (
-    <div className="app-container">
-      <header>
+    <div>
+      <header className="p-6">
         <Link to="/">
           <img
             src={SPOTIFY_SRC_ICON}
@@ -26,7 +26,7 @@ function SpotifyApp({getAuthAction}) {
           />
         </Link>
       </header>
-      <div className="routes-container">
+      <div className="my-10 mx-36">
         <Routes />
       </div>
     </div>

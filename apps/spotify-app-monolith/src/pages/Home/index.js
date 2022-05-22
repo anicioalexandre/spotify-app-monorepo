@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import {Button, FieldSet, ImageLabel} from 'design-system'
+import {Button, FieldSet, ImageLabel, EmptyState} from 'design-system'
 
 import { LABELS } from './constants'
 import SearchInput from '../../components/SearchInput'
 import { clearLocalStorage, getLocalStorage } from '../../utils/localStorage'
-import { setClickedTrack } from '../../redux/modules/track'
-import EmptyState from '../../components/EmptyState'
 
 const Home = () => {
   const [recentSearches, setRecentSearches] = useState([])
@@ -20,7 +18,7 @@ const Home = () => {
       <SearchInput />
       <FieldSet label={LABELS.recentSearch}>
         {!recentSearches?.length ? (
-          <EmptyState customLabel={LABELS.emptyState} />
+          <EmptyState label={LABELS.emptyState} />
         ) : (
           recentSearches.map(
             ({ albumId, trackId, image, name, artistName }) => (

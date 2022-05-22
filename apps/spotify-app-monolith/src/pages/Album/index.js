@@ -2,12 +2,11 @@ import React, {useEffect} from 'react'
 import {useHistory, useParams, useLocation} from 'react-router'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {Button, ImageLabel} from 'design-system'
+import {Button, ImageLabel, LoadingState} from 'design-system'
 import qs from 'qs'
 
 import {getAlbum} from '../../redux/modules/album'
 import TracksList from '../../components/TracksList'
-import LoadingState from '../../components/LoadingState'
 import TrackPlayer from '../../components/TrackPlayer'
 
 const Album = ({getAlbumAction, album}) => {
