@@ -2,15 +2,13 @@ import React, {useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {FieldSet, ImageLabel} from 'design-system'
+import {FieldSet, ImageLabel, EmptyState, LoadingState} from 'design-system'
 
 import {LABELS} from './constants'
 import SearchInput from '../../components/SearchInput'
 import {getSearch} from '../../redux/modules/search'
 import {getAuth} from '../../redux/modules/authToken'
-import LoadingState from '../../components/LoadingState'
 import {setSearchedResults} from '../../utils/localStorage'
-import EmptyState from '../../components/EmptyState'
 
 const Search = ({
   getSearchAction,
@@ -41,7 +39,7 @@ const Search = ({
     <div className="flex flex-col gap-12">
       <SearchInput disabled={searchLoading} />
       <FieldSet label={LABELS.albuns + `"${decodedQuery}"`}>
-        {isSomethingLoading || isAlbumsEmpty
+        {isAlbumsEmpty
           ? renderState()
           : albums.map(
               ({albumId, albumImage, albumName, artistName, trackId}) => (
@@ -69,7 +67,7 @@ const Search = ({
             )}
       </FieldSet>
       <FieldSet label={LABELS.tracks + `"${decodedQuery}"`}>
-        {isSomethingLoading || isTracksEmpty
+        {isTracksEmpty
           ? renderState()
           : tracks.map(
               ({albumId, albumImage, artistName, trackId, trackName}) => (
