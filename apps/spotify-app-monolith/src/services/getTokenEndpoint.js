@@ -1,6 +1,6 @@
 import qs from 'qs'
 
-import axios from './axios'
+import axios from 'config/axios'
 import {SPOTIFY_TOKEN_API} from './constants'
 
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
