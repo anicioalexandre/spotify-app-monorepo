@@ -10,27 +10,22 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup index.tsx --format esm,cjs --dts --external react",
-    "dev": "tsup index.tsx --format esm,cjs --watch --dts --external react",
-    "lint": "TIMING=1 eslint src --fix",
+    "build": "tsc --outDir dist",
+    "dev": "tsc --watch --outDir dist",
+    "lint": "eslint --fix",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.8",
-    "autoprefixer": "^10.4.7",
+    "@types/react-router-dom": "^5.3.3",
     "config": "*",
-    "postcss": "^8.4.13",
     "react": "^17.0.2",
-    "tailwindcss": "^3.0.24",
     "tsconfig": "*",
-    "tsup": "^5.10.1",
     "typescript": "^4.5.3"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "react-router-dom": "^5.2.0"
   }
 }

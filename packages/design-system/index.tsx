@@ -15,3 +15,6 @@ export * from './EmptyState'
 
 export {default as LoadingState} from './LoadingState'
 export * from './LoadingState'
+
+export {default as SearchInput} from './SearchInput'
+export * from './SearchInput'

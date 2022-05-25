@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "changeset": "changeset",
-    "clean": "turbo run clean && rm -rf node_modules",
+    "clean": "turbo run clean && rm -rf node_modules && rm -rf ./apps/*/node_modules && rm -rf ./packages/*/node_modules && rm -rf ./apps/*/dist && rm -rf ./packages/*/dist",
     "dev": "turbo run dev --no-cache --parallel --continue",
     "release": "turbo run build --filter=docs^... && changeset publish",
     "version-packages": "changeset version",

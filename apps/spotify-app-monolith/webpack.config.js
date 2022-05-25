@@ -3,50 +3,35 @@ const Dotenv = require('dotenv-webpack')
 const path = require('path')
 
 module.exports = {
+  entry: './src/index',
   mode: 'development',
-  devtool: false,
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    port: 3005,
+  },
+  output: {
+    publicPath: 'auto',
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'postcss-loader']
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
-    ]
-  },
-  optimization: {
-    splitChunks: { chunks: 'all' }
-  },
-  performance: {
-    hints: false,
-    maxEntrypointSize: 512000,
-    maxAssetSize: 512000
-  },
-  entry: { index: path.resolve(__dirname, 'src', 'index.js') },
-  output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
-  },
-  devServer: {
-    historyApiFallback: true,
-    port: 3005,
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.html')
+      template: path.resolve(__dirname, 'src', 'index.html'),
     }),
     new Dotenv(),
   ],
-  resolve: {
-    fallback: {
-      fs: false,
-      path: false
-    }
-  }
 }
