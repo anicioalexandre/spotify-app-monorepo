@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     setRecentSearches(getLocalStorage())
   }, [])
-  
+
   return (
     <div className="flex flex-col gap-12">
       <SearchInput />

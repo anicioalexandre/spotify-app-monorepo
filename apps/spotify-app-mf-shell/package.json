@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "dev": "webpack serve",
-    "build": "webpack --mode production --env production",
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production",
     "build:stats": "webpack --mode production --json > stats.json",
     "test2": "webpack-bundle-analyzer stats.json"
   },
