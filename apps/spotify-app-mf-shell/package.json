@@ -1,12 +1,12 @@
 {
-  "name": "spotify-app-shell",
+  "name": "spotify-app-mf-shell",
   "version": "1.0.0",
   "description": "Micro-Frontend Shell - Spotify App",
   "private": true,
   "scripts": {
     "test": "jest",
     "dev": "webpack serve",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production --env production",
     "build:stats": "webpack --mode production --json > stats.json",
     "test2": "webpack-bundle-analyzer stats.json"
   },
