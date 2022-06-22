@@ -6,13 +6,8 @@ import {Link} from 'react-router-dom'
 import {SPOTIFY_SRC_ICON} from './pages/Home/constants'
 import {getAuth} from './redux/modules/authToken'
 import Routes from './Routes'
-import Cookies from 'js-cookie'
 
-function SpotifyApp({getAuthAction}) {
-  const token = Cookies.get('spotify-token')
-  useEffect(() => {
-    if (!token) getAuthAction()
-  }, [token])
+function SpotifyApp() {
 
   return (
     <div>
