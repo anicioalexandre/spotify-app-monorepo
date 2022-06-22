@@ -27,6 +27,7 @@ const getTokenEndpoint = async () => {
     )
     return Promise.resolve(response.data.access_token)
   } catch (error) {
+    console.error(error)
     return Promise.reject(error)
   }
 }
@@ -36,12 +37,16 @@ instance.interceptors.request.use(async (request) => {
   const tokenCookie = Cookies.get('spotify-token')
   let tokenFetched = ''
 
+  console.log('debug tokenFetched', tokenFetched)
   if (!tokenCookie) {
+    console.log('debug tokenCookie', tokenCookie)
     tokenFetched = await getTokenEndpoint()
+    console.log('debug tokenFetched 2', tokenFetched)
     Cookies.set('spotify-token', tokenFetched)
   }
-
+  
   const token = tokenCookie || tokenFetched
+  console.log('debug token', token)
 
   if (token) {
     if (request.headers && !request.headers.Authorization) {
