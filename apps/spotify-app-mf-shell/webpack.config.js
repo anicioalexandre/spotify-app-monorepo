@@ -56,18 +56,18 @@ module.exports = {
         react: {
           singleton: true,
         },
-        'react-dom': {
-          singleton: true,
-        },
-        'react-router-dom': {
-          singleton: true,
-        },
-        'design-system': {
-          singleton: true,
-        },
-        config: {
-          singleton: true,
-        },
+        // 'react-dom': {
+        //   singleton: true,
+        // },
+        // 'react-router-dom': {
+        //   singleton: true,
+        // },
+        // 'design-system': {
+        //   singleton: true,
+        // },
+        // config: {
+        //   singleton: true,
+        // },
       },
     }),
   ],
