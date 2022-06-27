@@ -2,7 +2,7 @@ const {ModuleFederationPlugin} = require('webpack').container
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const path = require('path')
-const dependencies = require('./package.json').dependencies
+// const dependencies = require('./package.json').dependencies
 
 module.exports = {
   entry: './src/index',
@@ -42,22 +42,28 @@ module.exports = {
         './Search': './src/App',
       },
       shared: {
-        ...dependencies,
+        // ...dependencies,
         react: {
           singleton: true,
         },
-        // 'react-dom': {
-        //   singleton: true,
-        // },
-        // 'react-router-dom': {
-        //   singleton: true,
-        // },
-        // 'design-system': {
-        //   singleton: true,
-        // },
-        // config: {
-        //   singleton: true,
-        // },
+        'react-dom': {
+          singleton: true,
+        },
+        'react-router-dom': {
+          singleton: true,
+        },
+        'react-redux': {
+          singleton: true,
+        },
+        'redux': {
+          singleton: true,
+        },
+        'design-system': {
+          singleton: true,
+        },
+        config: {
+          singleton: true,
+        },
       },
     }),
   ],
