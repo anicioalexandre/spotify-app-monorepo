@@ -28,6 +28,9 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    chunkIds: 'named',
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
