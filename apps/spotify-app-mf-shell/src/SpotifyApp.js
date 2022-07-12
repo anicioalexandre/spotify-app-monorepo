@@ -2,12 +2,17 @@ import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 import {SPOTIFY_SRC_ICON} from './pages/Home/constants'
 import {getAuth} from './redux/modules/authToken'
 import Routes from './Routes'
 
-function SpotifyApp() {
+function SpotifyApp({getAuthAction}) {
+  const token = Cookies.get('spotify-token')
+  useEffect(() => {
+    if (!token) getAuthAction()
+  }, [token])
 
   return (
     <div>
